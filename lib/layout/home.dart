@@ -16,17 +16,7 @@ class Home_LO extends StatelessWidget {
             var cubit = AppCubitNews.get(context);
             return Scaffold(
               floatingActionButton: FloatingActionButton(
-                  onPressed: () {
-                    DioHelper.getData(urlPath: 'v2/top-headlines', query: {
-                      'country': 'us',
-                      'apiKey': '8a80ccfb232846e3abd78a75a59c4eb6'
-                    }).then((value) {
-                      print(value.data.toString());
-                    }).catchError((onError) {
-                      print(onError.toString());
-                    });
-                  },
-                  child: Icon(Icons.data_array)),
+                  onPressed: () {}, child: Icon(Icons.data_array)),
               appBar: AppBar(
                 titleSpacing: 20.0,
                 title: Text('News App'),
