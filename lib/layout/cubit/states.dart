@@ -16,4 +16,16 @@ class AppNewsGetBusinessErrorState extends AppNewsState {
 
 class AppNewsGetSportssDataState extends AppNewsState {}
 
-class AppNewsGetGeneralDataState extends AppNewsState {}
+class AppNewsGetSportssErrorState extends AppNewsState {
+  final String error;
+
+  AppNewsGetSportssErrorState({required this.error});
+}
+
+class AppNewsGetScinceDataState extends AppNewsState {}
+
+class AppNewsGetScinceErrorState extends AppNewsState {
+  final String error;
+
+  AppNewsGetScinceErrorState({required this.error});
+}

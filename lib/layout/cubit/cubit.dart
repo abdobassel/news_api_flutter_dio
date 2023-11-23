@@ -32,7 +32,7 @@ class AppCubitNews extends Cubit<AppNewsState> {
     emit(AppNewsIsLoadingState());
     DioHelper.getData(urlPath: 'v2/top-headlines', query: {
       'country': 'us',
-      'category': 'sports',
+      'category': 'business',
       'apiKey': '8a80ccfb232846e3abd78a75a59c4eb6'
     }).then((value) {
       print(value.data['articles']);
@@ -41,6 +41,43 @@ class AppCubitNews extends Cubit<AppNewsState> {
     }).catchError((onError) {
       print(onError.toString());
       emit(AppNewsGetBusinessErrorState(error: 'error get databusiness'));
+    });
+  }
+
+// sports
+  List<dynamic> sports = [];
+
+  void getsports() {
+    emit(AppNewsIsLoadingState());
+    DioHelper.getData(urlPath: 'v2/top-headlines', query: {
+      'country': 'us',
+      'category': 'sports',
+      'apiKey': '8a80ccfb232846e3abd78a75a59c4eb6'
+    }).then((value) {
+      print(value.data['articles']);
+      sports = value.data['articles'];
+      emit(AppNewsGetSportssDataState());
+    }).catchError((onError) {
+      print(onError.toString());
+      emit(AppNewsGetSportssErrorState(error: 'error get datasports'));
+    });
+  }
+
+// scince screen logic
+  List<dynamic> scince = [];
+  void getScince() {
+    emit(AppNewsIsLoadingState());
+    DioHelper.getData(urlPath: 'v2/top-headlines', query: {
+      'country': 'us',
+      'category': 'science',
+      'apiKey': '8a80ccfb232846e3abd78a75a59c4eb6'
+    }).then((value) {
+      print(value.data['articles']);
+      scince = value.data['articles'];
+      emit(AppNewsGetScinceDataState());
+    }).catchError((onError) {
+      print(onError.toString());
+      emit(AppNewsGetScinceErrorState(error: 'error get dataScince'));
     });
   }
 }

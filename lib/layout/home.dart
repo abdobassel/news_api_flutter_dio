@@ -10,7 +10,10 @@ class Home_LO extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AppCubitNews(AppNewsInitialState()),
+      create: (context) => AppCubitNews(AppNewsInitialState())
+        ..getBusiness()
+        ..getsports()
+        ..getScince(),
       child: BlocConsumer<AppCubitNews, AppNewsState>(
           builder: ((context, state) {
             var cubit = AppCubitNews.get(context);
@@ -39,10 +42,10 @@ class Home_LO extends StatelessWidget {
                     BottomNavigationBarItem(
                         label: 'business', icon: Icon(Icons.business)),
                     BottomNavigationBarItem(
-                        label: 'business',
+                        label: 'Sports',
                         icon: Icon(Icons.sports_basketball_outlined)),
                     BottomNavigationBarItem(
-                        label: 'business', icon: Icon(Icons.science)),
+                        label: 'Scince', icon: Icon(Icons.science)),
                   ]),
             );
           }),
