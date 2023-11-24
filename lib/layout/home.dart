@@ -9,55 +9,49 @@ class Home_LO extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AppCubitNews(AppNewsInitialState())
-        ..getBusiness()
-        ..getsports()
-        ..getScince(),
-      child: BlocConsumer<AppCubitNews, AppNewsState>(
-          builder: ((context, state) {
-            var cubit = AppCubitNews.get(context);
-            return Scaffold(
-              floatingActionButton: FloatingActionButton(
-                  onPressed: () {}, child: Icon(Icons.data_array)),
-              appBar: AppBar(
-                titleSpacing: 20.0,
-                title: Text('News App'),
-                actions: [
-                  IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.search,
-                        size: 25,
-                      )),
-                  IconButton(
-                      onPressed: () {
-                        cubit.changeMode();
-                      },
-                      icon: Icon(
-                        Icons.brightness_4,
-                        size: 25,
-                      ))
-                ],
-              ),
-              body: cubit.screens[cubit.currentIndexBottomBar],
-              bottomNavigationBar: BottomNavigationBar(
-                  currentIndex: cubit.currentIndexBottomBar,
-                  onTap: (index) {
-                    cubit.changeBtmItem(index);
-                  },
-                  items: [
-                    BottomNavigationBarItem(
-                        label: 'business', icon: Icon(Icons.business)),
-                    BottomNavigationBarItem(
-                        label: 'Sports',
-                        icon: Icon(Icons.sports_basketball_outlined)),
-                    BottomNavigationBarItem(
-                        label: 'Scince', icon: Icon(Icons.science)),
-                  ]),
-            );
-          }),
-          listener: (context, state) {}),
-    );
+    return BlocConsumer<AppCubitNews, AppNewsState>(
+        builder: ((context, state) {
+          var cubit = AppCubitNews.get(context);
+          return Scaffold(
+            floatingActionButton: FloatingActionButton(
+                onPressed: () {}, child: Icon(Icons.data_array)),
+            appBar: AppBar(
+              titleSpacing: 20.0,
+              title: Text('News App'),
+              actions: [
+                IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.search,
+                      size: 25,
+                    )),
+                IconButton(
+                    onPressed: () {
+                      cubit.changeMode();
+                    },
+                    icon: Icon(
+                      Icons.brightness_4,
+                      size: 25,
+                    ))
+              ],
+            ),
+            body: cubit.screens[cubit.currentIndexBottomBar],
+            bottomNavigationBar: BottomNavigationBar(
+                currentIndex: cubit.currentIndexBottomBar,
+                onTap: (index) {
+                  cubit.changeBtmItem(index);
+                },
+                items: [
+                  BottomNavigationBarItem(
+                      label: 'business', icon: Icon(Icons.business)),
+                  BottomNavigationBarItem(
+                      label: 'Sports',
+                      icon: Icon(Icons.sports_basketball_outlined)),
+                  BottomNavigationBarItem(
+                      label: 'Scince', icon: Icon(Icons.science)),
+                ]),
+          );
+        }),
+        listener: (context, state) {});
   }
 }

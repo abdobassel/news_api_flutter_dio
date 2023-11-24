@@ -21,16 +21,16 @@ class News_App_V2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AppCubitNews(AppNewsInitialState()),
+      create: (context) => AppCubitNews(AppNewsInitialState())
+        ..getBusiness()
+        ..getScince()
+        ..getsports(),
       child: BlocConsumer<AppCubitNews, AppNewsState>(
         listener: (context, state) {},
         builder: (context, state) {
           return MaterialApp(
             home: Home_LO(),
             debugShowCheckedModeBanner: false,
-            themeMode: AppCubitNews.get(context).isDark
-                ? ThemeMode.dark
-                : ThemeMode.light,
             darkTheme: ThemeData(
               scaffoldBackgroundColor: Color(0xff313737),
               useMaterial3: true,
@@ -92,6 +92,9 @@ class News_App_V2 extends StatelessWidget {
                 elevation: 0.0,
               ),
             ),
+            themeMode: AppCubitNews.get(context).isDark == true
+                ? ThemeMode.dark
+                : ThemeMode.light,
           );
         },
       ),
