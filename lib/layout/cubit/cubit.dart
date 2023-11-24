@@ -80,4 +80,12 @@ class AppCubitNews extends Cubit<AppNewsState> {
       emit(AppNewsGetScinceErrorState(error: 'error get dataScince'));
     });
   }
+
+  // app mode
+
+  bool isDark = true;
+  void changeMode() {
+    isDark = !isDark;
+    emit(AppNewsChangeModeState());
+  }
 }

@@ -29,3 +29,5 @@ class AppNewsGetScinceErrorState extends AppNewsState {
 
   AppNewsGetScinceErrorState({required this.error});
 }
+
+class AppNewsChangeModeState extends AppNewsState {}

@@ -29,6 +29,14 @@ class Home_LO extends StatelessWidget {
                       icon: Icon(
                         Icons.search,
                         size: 25,
+                      )),
+                  IconButton(
+                      onPressed: () {
+                        cubit.changeMode();
+                      },
+                      icon: Icon(
+                        Icons.brightness_4,
+                        size: 25,
                       ))
                 ],
               ),

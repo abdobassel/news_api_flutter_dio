@@ -14,10 +14,14 @@ class BusinessScreen extends StatelessWidget {
           var business = AppCubitNews.get(context).business;
           return ListView.builder(
             itemBuilder: (context, index) {
-              return ItemArticleBuilder(
-                  title: business[index]['title'],
-                  img: business[index]['urlToImage'],
-                  date: business[index]['publishedAt']);
+              return business.isNotEmpty
+                  ? ItemArticleBuilder(
+                      title: business[index]['title'],
+                      img: business[index]['urlToImage'],
+                      date: business[index]['publishedAt'])
+                  : Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    );
             },
             itemCount: 10,
           );

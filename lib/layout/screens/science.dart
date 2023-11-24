@@ -14,10 +14,14 @@ class ScinceScreen extends StatelessWidget {
           var scince = AppCubitNews.get(context).scince;
           return ListView.builder(
             itemBuilder: (context, index) {
-              return ItemArticleBuilder(
-                  title: scince[index]['title'],
-                  img: scince[index]['urlToImage'],
-                  date: scince[index]['publishedAt']);
+              return scince.isNotEmpty
+                  ? ItemArticleBuilder(
+                      title: scince[index]['title'],
+                      img: scince[index]['urlToImage'],
+                      date: scince[index]['publishedAt'])
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    );
             },
             itemCount: 10,
           );

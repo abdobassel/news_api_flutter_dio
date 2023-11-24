@@ -14,10 +14,14 @@ class SportsScreen extends StatelessWidget {
           var sports = AppCubitNews.get(context).sports;
           return ListView.builder(
             itemBuilder: (context, index) {
-              return ItemArticleBuilder(
-                  title: sports[index]['title'],
-                  img: sports[index]['urlToImage'],
-                  date: sports[index]['publishedAt']);
+              return sports.isNotEmpty
+                  ? ItemArticleBuilder(
+                      title: sports[index]['title'],
+                      img: sports[index]['urlToImage'],
+                      date: sports[index]['publishedAt'])
+                  : Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    );
             },
             itemCount: 10,
           );

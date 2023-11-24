@@ -16,9 +16,12 @@ Widget ItemArticleBuilder({
                   borderRadius: BorderRadius.circular(10.0),
                   image: DecorationImage(
                       image: img != null
-                          ? NetworkImage('$img')
+                          ? NetworkImage(
+                              '$img',
+                            )
                           : NetworkImage(
-                              'https://variety.com/wp-content/uploads/2021/04/Avatar.jpg')))),
+                              'https://variety.com/wp-content/uploads/2021/04/Avatar.jpg'),
+                      fit: BoxFit.cover))),
           SizedBox(
             width: 20,
           ),
@@ -41,9 +44,12 @@ Widget ItemArticleBuilder({
                     ),
                     overflow: TextOverflow.ellipsis,
                   )),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Text(
                     '$date',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 18, color: Colors.grey),
                   )
                 ],
               ),
