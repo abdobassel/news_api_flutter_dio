@@ -3,20 +3,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:news_dio_app/apiDio/apidio.dart';
 import 'package:news_dio_app/bloc_observer.dart';
+import 'package:news_dio_app/cache_helper/cache_helper.dart';
 import 'package:news_dio_app/layout/cubit/cubit.dart';
 import 'package:news_dio_app/layout/cubit/states.dart';
 import 'package:news_dio_app/layout/home.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
+  await cacheHelper.init();
+  bool isDark = cacheHelper.getDataMode(key: 'isDark');
   DioHelper.init();
 
-  runApp(const News_App_V2());
+  runApp(News_App_V2(isDark: isDark ? true : false));
 }
 
 class News_App_V2 extends StatelessWidget {
-  const News_App_V2({super.key});
+  final bool isDark;
+  const News_App_V2({
+    required this.isDark,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +32,8 @@ class News_App_V2 extends StatelessWidget {
       create: (context) => AppCubitNews(AppNewsInitialState())
         ..getBusiness()
         ..getScince()
-        ..getsports(),
+        ..getsports()
+        ..changeMode(fromShared: isDark),
       child: BlocConsumer<AppCubitNews, AppNewsState>(
         listener: (context, state) {},
         builder: (context, state) {

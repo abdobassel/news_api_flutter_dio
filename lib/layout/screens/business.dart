@@ -20,7 +20,7 @@ class BusinessScreen extends StatelessWidget {
                       img: business[index]['urlToImage'],
                       date: business[index]['publishedAt'])
                   : Center(
-                      child: CircularProgressIndicator.adaptive(),
+                      child: CircularProgressIndicator(),
                     );
             },
             itemCount: 10,

@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_dio_app/apiDio/apidio.dart';
+import 'package:news_dio_app/cache_helper/cache_helper.dart';
 import 'package:news_dio_app/layout/cubit/states.dart';
 import 'package:news_dio_app/layout/screens/business.dart';
 import 'package:news_dio_app/layout/screens/science.dart';
@@ -84,8 +85,17 @@ class AppCubitNews extends Cubit<AppNewsState> {
   // app mode
 
   bool isDark = true;
-  void changeMode() {
-    isDark = !isDark;
-    emit(AppNewsChangeModeState());
+  void changeMode({bool? fromShared}) {
+    if (fromShared != null) {
+      isDark = fromShared;
+      emit(AppNewsChangeModeState());
+    } else {
+      isDark = !isDark;
+      cacheHelper.putDataMode(key: 'isDark', value: isDark)!.then(
+        (value) {
+          emit(AppNewsChangeModeState());
+        },
+      );
+    }
   }
 }
