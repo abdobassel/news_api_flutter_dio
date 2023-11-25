@@ -15,7 +15,8 @@ class ScinceScreen extends StatelessWidget {
           return ListView.builder(
             itemBuilder: (context, index) {
               return scince.isNotEmpty
-                  ? ItemArticleBuilder(
+                  ? ItemArticleBuilder(context,
+                      url: scince[index]['url'],
                       title: scince[index]['title'],
                       img: scince[index]['urlToImage'],
                       date: scince[index]['publishedAt'])

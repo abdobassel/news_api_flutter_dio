@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_dio_app/apiDio/apidio.dart';
 import 'package:news_dio_app/layout/cubit/cubit.dart';
 import 'package:news_dio_app/layout/cubit/states.dart';
+import 'package:news_dio_app/layout/screens/search_screen.dart';
 
 class Home_LO extends StatelessWidget {
   const Home_LO({super.key});
@@ -20,7 +21,12 @@ class Home_LO extends StatelessWidget {
               title: Text('News App'),
               actions: [
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SearchNewsScreen()));
+                    },
                     icon: Icon(
                       Icons.search,
                       size: 25,

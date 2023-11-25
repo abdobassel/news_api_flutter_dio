@@ -31,3 +31,11 @@ class AppNewsGetScinceErrorState extends AppNewsState {
 }
 
 class AppNewsChangeModeState extends AppNewsState {}
+
+class AppNewsGetSearchErrorState extends AppNewsState {
+  final String error;
+
+  AppNewsGetSearchErrorState({required this.error});
+}
+
+class AppNewsSearchState extends AppNewsState {}

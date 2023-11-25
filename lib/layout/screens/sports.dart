@@ -15,7 +15,8 @@ class SportsScreen extends StatelessWidget {
           return ListView.builder(
             itemBuilder: (context, index) {
               return sports.isNotEmpty
-                  ? ItemArticleBuilder(
+                  ? ItemArticleBuilder(context,
+                      url: sports[index]['url'],
                       title: sports[index]['title'],
                       img: sports[index]['urlToImage'],
                       date: sports[index]['publishedAt'])

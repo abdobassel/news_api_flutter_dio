@@ -53,8 +53,8 @@ class News_App_V2 extends StatelessWidget {
                   elevation: 0.0,
                   systemOverlayStyle: SystemUiOverlayStyle(
                       statusBarBrightness: Brightness.light,
-                      statusBarIconBrightness: Brightness.dark,
-                      statusBarColor: Colors.white),
+                      statusBarIconBrightness: Brightness.light,
+                      statusBarColor: Color(0xff313737)),
                   backgroundColor: Color(0xff313737)),
               textTheme: TextTheme(
                 bodyMedium: TextStyle(
@@ -73,6 +73,12 @@ class News_App_V2 extends StatelessWidget {
             ),
             theme: ThemeData(
               useMaterial3: true,
+              progressIndicatorTheme:
+                  ProgressIndicatorThemeData(circularTrackColor: Colors.blue),
+              inputDecorationTheme: InputDecorationTheme(
+                  labelStyle: TextStyle(
+                      color: const Color.fromARGB(255, 196, 207, 216)),
+                  hintStyle: TextStyle(color: Colors.blue)),
               scaffoldBackgroundColor: Colors.white,
               appBarTheme: AppBarTheme(
                   scrolledUnderElevation: 0.0,
@@ -85,7 +91,7 @@ class News_App_V2 extends StatelessWidget {
                   systemOverlayStyle: SystemUiOverlayStyle(
                       statusBarBrightness: Brightness.dark,
                       statusBarIconBrightness: Brightness.dark,
-                      statusBarColor: Colors.black),
+                      statusBarColor: Colors.white),
                   backgroundColor: Colors.white),
               textTheme: TextTheme(
                 bodyMedium: TextStyle(

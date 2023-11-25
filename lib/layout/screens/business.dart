@@ -16,9 +16,12 @@ class BusinessScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               return business.isNotEmpty
                   ? ItemArticleBuilder(
+                      context,
+                      url: business[index]['url'],
                       title: business[index]['title'],
                       img: business[index]['urlToImage'],
-                      date: business[index]['publishedAt'])
+                      date: business[index]['publishedAt'],
+                    )
                   : Center(
                       child: CircularProgressIndicator(),
                     );
